@@ -55,4 +55,11 @@ password : admin
             'url' => env('APP_URL').'uploads/',
         ],
 ```
+# API
+
+- create a test controller
+```
+php artisan make:controller TestController
+```
+
 .
