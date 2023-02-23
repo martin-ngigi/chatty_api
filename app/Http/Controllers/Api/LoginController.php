@@ -93,4 +93,18 @@ class LoginController extends Controller
         return ['code'=>1, "data"=>" valid data -----", 'msg'=>'data present'];
     }
 
+
+    public function contact(Request $request){
+        $token =$request->user_token;
+        $res = DB::table("users")->select(
+            'avatar',
+            'description',
+            'online',
+            'token',
+        )->where("token", '!=', $token)->get();
+        //)->get();
+        return ['code'=>0, "data"=>$res, 'msg'=>'got all users info'];
+
+    }
+
 }

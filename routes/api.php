@@ -42,6 +42,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Api'], function(){
     Route::any('/login', 'LoginController@login');
     Route::any('/get_profile', 'LoginController@get_profile');
     Route::any("/login2", 'LoginController@login2');
+    Route::any("/contact", 'LoginController@contact');
 });
 
 //
