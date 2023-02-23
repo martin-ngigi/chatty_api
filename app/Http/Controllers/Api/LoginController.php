@@ -31,53 +31,57 @@ class LoginController extends Controller
 
         // }
 
+        try{
+            $validated = $validator->validate();
+            $map = [];
+            $map['type']=$validated['type'];
+            $map['open_id']=$validated['open_id'];
 
-
-        //else
-        $validated = $validator->validate();
-        $map = [];
-        $map['type']=$validated['type'];
-        $map['open_id']=$validated['open_id'];
-
-        $result = DB::table('users')->select('avatar',
-            'name',
-            'description',
-            'type',
-            'token',
-            'access_token',
-            'online',
-            )
-            ->where($map)->first();
-
-            if(empty($result)){
-                $validated['token'] = md5(uniqid().rand(10000, 99999));
-                $validated['created_at'] = Carbon::now();
-                $validated['access_token'] = md5(uniqid().rand(1000000, 9999999));
-                $validated['expire_date'] = Carbon::now()->addDays(30);
-                $user_id=DB::table('users')->insertGetId($validated); //inserrt and get the inserted id
-                $user_result =DB::table('users')->select('avatar',
+            $result = DB::table('users')->select('avatar',
                 'name',
                 'description',
                 'type',
                 'token',
                 'access_token',
                 'online',
-                )->where('id', '=', $user_id)->first();
-                return ['code'=>0, 'data'=>$user_result, 'msg'=>'User has been created successfully'];
-            }
-            else{
-                $access_token = md5(uniqid().rand(1000000, 9999999));
-                $expire_date = Carbon::now()->addDays(30);
-                DB::table('users')->where($map)->update(
-                    [
-                        "access_token" => $access_token,
-                        "expire_date" => $expire_date
-                    ]
-                );
-                $result->access_token= $access_token;
-                return ['code'=>1, 'data'=>$result, 'msg'=>'User information updated successfully'];
+                )
+                ->where($map)->first();
 
-            }
+                if(empty($result)){
+                    $validated['token'] = md5(uniqid().rand(10000, 99999));
+                    $validated['created_at'] = Carbon::now();
+                    $validated['access_token'] = md5(uniqid().rand(1000000, 9999999));
+                    $validated['expire_date'] = Carbon::now()->addDays(30);
+                    $user_id=DB::table('users')->insertGetId($validated); //inserrt and get the inserted id
+                    $user_result =DB::table('users')->select('avatar',
+                    'name',
+                    'description',
+                    'type',
+                    'token',
+                    'access_token',
+                    'online',
+                    )->where('id', '=', $user_id)->first();
+                    return ['code'=>0, 'data'=>$user_result, 'msg'=>'User has been created successfully'];
+                }
+                else{
+                    $access_token = md5(uniqid().rand(1000000, 9999999));
+                    $expire_date = Carbon::now()->addDays(30);
+                    DB::table('users')->where($map)->update(
+                        [
+                            "access_token" => $access_token,
+                            "expire_date" => $expire_date
+                        ]
+                    );
+                    $result->access_token= $access_token;
+                    return ['code'=>1, 'data'=>$result, 'msg'=>'User information updated successfully'];
+
+                }
+        }
+        catch(Exception $e){
+            return ['code'=>-1, 'data'=>"No data available", 'msg'=>(string)$e];
+
+        }
+
     }
 
     public function login2(){

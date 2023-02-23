@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('open_id')->nullable();
             $table->integer('type')->nullable();
             $table->string('token')->nullable();
+            $table->string('phone')->nullable();
         });
     }
 
