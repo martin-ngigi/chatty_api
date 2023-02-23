@@ -77,4 +77,8 @@ php artisan make:model User
 ```
 php artisan migrate
 ```
+- create a middle to check user whether is logged in or not before viewing all contacts
+```
+php artisan make:middleware CheckUser
+```
 .
