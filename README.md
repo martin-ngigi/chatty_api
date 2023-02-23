@@ -61,5 +61,20 @@ password : admin
 ```
 php artisan make:controller TestController
 ```
-
+- create a login controller inside Api directory
+```
+php artisan make:controller Api\LoginController
+```
+- remove cache i.e. login data
+```
+php artisan config:cache && php artisan config:clear && composer dump-autoload -o
+```
+- create user model, thats if there user model doest exist
+```
+php artisan make:model User
+```
+- migrate the existing user migration to the new, but first rename the migration and delee user's table from the db
+```
+php artisan migrate
+```
 .
