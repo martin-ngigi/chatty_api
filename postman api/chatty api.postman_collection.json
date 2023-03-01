@@ -1,0 +1,136 @@
+{
+	"info": {
+		"_postman_id": "51e1b055-9792-4886-8f60-72e80ce4a986",
+		"name": "chatt api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14699841"
+	},
+	"item": [
+		{
+			"name": "get test api",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/index",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"index"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"type\":2,\"name\":\"Martin Wainaina\",\"description\":null,\"email\":\"martinwainaina001@gmail.com\",\"phone\":null,\"avatar\":\"https://lh3.googleusercontent.com/a/AGNmyxbpWYX1cLIHERdsPNGDHJKI_HLy_rdghlf8eZ9oqQ=s96-c\",\"open_id\":\"109323818198398961080\",\"online\":null}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "contact",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "ba5d3a1f57bf07b0409e39e93272123c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/contact",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"contact"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test contact token",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/contact?user_token=93bc9744c24e5101f02efc6e2b23083c",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"contact"
+					],
+					"query": [
+						{
+							"key": "user_token",
+							"value": "93bc9744c24e5101f02efc6e2b23083c"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
