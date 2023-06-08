@@ -81,4 +81,11 @@ php artisan migrate
 ```
 php artisan make:middleware CheckUser
 ```
-.
+
+## Exposing localhost laravel webiste globally  for common WIFI users
+- While on localhost, to expose the website globally, (Change IP accordingly)
+run:
+```
+php artisan serve --host=192.168.1.104 --port=8001 
+```
+- NB, Both devices must be connected on the same WIFI
