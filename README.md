@@ -86,6 +86,11 @@ php artisan make:middleware CheckUser
 - While on localhost, to expose the website globally, (Change IP accordingly)
 run:
 ```
-php artisan serve --host=192.168.1.104 --port=8001 
+php artisan serve --host=192.168.1.105 --port=8001 
 ```
 - NB, Both devices must be connected on the same WIFI
+
+## Create controller
+```
+php artisan make:controller Api/AccessTokenController
+```

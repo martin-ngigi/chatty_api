@@ -43,6 +43,8 @@ Route::group(['namespace'=>'App\Http\Controllers\Api'], function(){
     Route::any('/get_profile', 'LoginController@get_profile');
     Route::any("/login2", 'LoginController@login2');
     Route::any("/contact", 'LoginController@contact')->middleware('CheckUser');
+
+    Route::any('/get_rtc_token', 'AccessTokenController@get_rtc_token')->middleware('CheckUser');
 });
 
 //
