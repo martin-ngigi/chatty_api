@@ -45,6 +45,10 @@ Route::group(['namespace'=>'App\Http\Controllers\Api'], function(){
     Route::any("/contact", 'LoginController@contact')->middleware('CheckUser');
 
     Route::any('/get_rtc_token', 'AccessTokenController@get_rtc_token')->middleware('CheckUser');
+
+    Route::any('/send_notice', 'LoginController@send_notice')->middleware('CheckUser');
+    Route::any('/bind_fcmtoken', 'LoginController@bind_fcmtoken')->middleware('CheckUser');
+
 });
 
 //

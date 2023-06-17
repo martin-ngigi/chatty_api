@@ -94,3 +94,22 @@ php artisan serve --host=192.168.1.105 --port=8001
 ```
 php artisan make:controller Api/AccessTokenController
 ```
+
+## Connect laravel with firebase server together.
+- [Documentation](https://firebase-php.readthedocs.io/en/stable/)
+- [Use kreait to connect](https://github.com/kreait/laravel-firebase)
+- [DBESTECH Push notification Link](https://www.dbestech.com/tutorials/php-send-firebase-push-notification)
+- Run the following command: 
+```
+$ composer require kreait/laravel-firebase
+$ php artisan vendor:publish --provider="Kreait\Laravel\Firebase\ServiceProvider" --tag=config
+```
+- click project settings > service accounts > Node.js > generate new private key. Then paste the .json file in project root directory. Add it to .env i.e.:
+```
+FIREBASE_CREDENTIALS=chatty-d292f-firebase-adminsdk-ft0fh-147227f110.json
+```
+
+- click project settings, then copy project id and paste in the .env file i.e.
+```
+FIREBASE_DATABASE_URL=https://chatty-d292f.firebaseio.com
+```
